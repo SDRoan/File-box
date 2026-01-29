@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# Environment variables
+server/.env
+client/.env
+
+# Uploads
+server/uploads/
+
+# Build outputs
+client/build/
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# MongoDB
+*.db
+
+
+
+
+
+
+
+
+
+

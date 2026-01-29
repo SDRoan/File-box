@@ -1,0 +1,45 @@
+{
+  "name": "dropbox-clone-server",
+  "version": "1.0.0",
+  "description": "Backend server for File Box - AI-powered cloud storage",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seed:learning": "node scripts/seedLearningResources.js",
+    "generate:learning": "node scripts/generateLearningResources.js"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.13.4",
+    "archiver": "^7.0.1",
+    "axios": "^1.13.2",
+    "bcryptjs": "^2.4.3",
+    "canvas": "^3.2.0",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "docx": "^9.5.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "form-data": "^4.0.5",
+    "fs-extra": "^11.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mammoth": "^1.11.0",
+    "mongoose": "^8.0.3",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "open": "^8.4.2",
+    "openai": "^6.10.0",
+    "path": "^0.12.7",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^3.11.174",
+    "sharp": "^0.34.5",
+    "socket.io": "^4.6.1",
+    "tesseract.js": "^6.0.1",
+    "uuid": "^9.0.1",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

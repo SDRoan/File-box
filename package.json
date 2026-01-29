@@ -1,0 +1,19 @@
+{
+  "name": "nexus",
+  "version": "1.0.0",
+  "description": "Nexus - AI-powered cloud storage with smart organization",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "echo '\n╔══════════════════════════════════════════════════════════════╗' && echo '║  🚀  Starting Nexus Development Server...                  ║' && echo '╚══════════════════════════════════════════════════════════════╝\n' && concurrently -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": ["file-storage", "cloud-storage", "ai", "file-management", "nexus"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
