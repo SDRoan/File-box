@@ -1,4 +1,4 @@
-# Nexus
+# File Box
 
 A full-featured cloud storage application built with React and Node.js, featuring AI-powered smart organization, file analytics, and advanced file management capabilities.
 
