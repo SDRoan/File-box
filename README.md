@@ -1,9 +1,10 @@
-# Nexus
+# File Box - AI-Powered Cloud Storage
 
-A full-featured cloud storage application built with React and Node.js, featuring AI-powered smart organization, file analytics, and advanced file management capabilities.
+A comprehensive cloud storage and student management platform built with React and Node.js, featuring AI-powered smart organization, file analytics, advanced file management, and student-focused academic tools.
 
 ## Features
 
+### Core File Management
 - 🔐 User Authentication (Register/Login)
 - 📁 File Upload & Download
 - 📂 Folder Management (Create, Navigate, Delete)
@@ -13,6 +14,32 @@ A full-featured cloud storage application built with React and Node.js, featurin
 - 💾 Storage Management (Track usage and limits)
 - 🔄 Real-time Updates (WebSocket integration)
 - 📱 Responsive UI
+- 🔍 Advanced File Search
+- 📊 File Analytics & Insights
+
+### Student Features
+- 📚 Course Management (Create, organize, delete courses)
+- 📝 Personal Notes (Organized by course with tags and topics)
+- 📅 Study Schedule & Planner (Plan study sessions with reminders)
+- 📈 Progress Tracking (Track grades, calculate GPA, view statistics)
+- 🧮 Grade Calculator (Calculate current grade and needed grades)
+- 🛠️ Study Tools (Quiz generator, Study guide generator)
+- 📊 Study Analytics (Track study time, productivity, insights)
+- 🎯 Quick Dashboard (Overview of assignments, files, notes, schedules)
+- 👥 Study Groups (Collaborate with classmates)
+- 📋 Assignment Tracker
+
+### Advanced Features
+- 🤖 AI Assistant (ChatGPT-like assistant for file management)
+- 🔗 File Connections (Link related files together)
+- 📄 Document Preview (PDF, Word, Images, Code files with syntax highlighting)
+- 🔒 Security Features (Secured links, audit logs)
+- ☁️ Cloud Backup Integration
+- 🔌 Integrations (Microsoft Teams, etc.)
+- 📑 Templates Library
+- 🌐 Web Shortcuts
+- 💬 Social Feed & Community
+- 📚 Learning Resources
 
 ## Tech Stack
 
@@ -90,17 +117,19 @@ npm start
 ## Project Structure
 
 ```
-dropbox-clone/
+File Box/
 ├── server/
-│   ├── models/          # MongoDB models
-│   ├── routes/          # API routes
+│   ├── models/          # MongoDB models (User, File, Course, etc.)
+│   ├── routes/          # API routes (auth, files, courses, etc.)
+│   ├── services/        # Business logic (AI, text extraction, etc.)
 │   ├── middleware/      # Auth middleware
+│   ├── config/          # Configuration files
 │   ├── uploads/         # Uploaded files storage
 │   └── index.js         # Server entry point
 ├── client/
 │   ├── src/
-│   │   ├── components/  # React components
-│   │   ├── context/     # React context
+│   │   ├── components/  # React components (Dashboard, StudentDashboard, etc.)
+│   │   ├── context/     # React context (Auth, etc.)
 │   │   ├── services/    # API services
 │   │   └── types/       # TypeScript types
 │   └── public/
