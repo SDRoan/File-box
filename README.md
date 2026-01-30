@@ -8,8 +8,6 @@ A comprehensive cloud storage and student management platform built with React a
 - 🔐 User Authentication (Register/Login)
 - 📁 File Upload & Download
 - 📂 Folder Management (Create, Navigate, Delete)
-- ⭐ Star Files and Folders
-- 🗑️ Trash System (Soft Delete & Permanent Delete)
 - 👥 File Sharing (Share links & User sharing)
 - 💾 Storage Management (Track usage and limits)
 - 🔄 Real-time Updates (WebSocket integration)
