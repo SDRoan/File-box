@@ -34,7 +34,8 @@ const WebShortcuts: React.FC = () => {
 
   useEffect(() => {
     loadShortcuts();
-  }, [searchQuery, showStarredOnly]); // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery, showStarredOnly]);
 
   const loadShortcuts = async () => {
     try {

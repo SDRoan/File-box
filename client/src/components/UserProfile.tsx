@@ -52,7 +52,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onClose }) => {
 
   useEffect(() => {
     loadProfile();
-  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
 
   const loadProfile = async () => {
     try {
