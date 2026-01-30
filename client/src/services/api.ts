@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { User, FileItem, Folder, Share } from '../types';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 

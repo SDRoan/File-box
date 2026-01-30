@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { analyticsAPI } from '../services/api';
-import { AnalyticsIcon, CloseIcon, LineChartIcon, StorageIcon, UnusedIcon } from './Icons';
+import { CloseIcon, LineChartIcon, StorageIcon, UnusedIcon } from './Icons';
 import './AnalyticsDashboard.css';
 
 interface AnalyticsDashboardProps {

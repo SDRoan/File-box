@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { socialAPI } from '../services/api';
-import { filesAPI } from '../services/api';
 import './UserProfile.css';
 
 interface User {
@@ -45,7 +44,6 @@ interface UserProfileProps {
 }
 
 const UserProfile: React.FC<UserProfileProps> = ({ userId, onClose }) => {
-  const { user } = useAuth();
   const [profile, setProfile] = useState<any>(null);
   const [posts, setPosts] = useState<SocialPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,7 +52,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onClose }) => {
 
   useEffect(() => {
     loadProfile();
-  }, [userId]);
+  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadProfile = async () => {
     try {
