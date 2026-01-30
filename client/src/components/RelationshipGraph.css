@@ -1,0 +1,397 @@
+.relationship-graph-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.relationship-graph-container {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 95vw;
+  height: 95vh;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #333;
+  background: #252525;
+  border-radius: 12px 12px 0 0;
+}
+
+.graph-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.graph-info {
+  display: flex;
+  gap: 1rem;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.close-btn {
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: #555;
+}
+
+.graph-content {
+  flex: 1;
+  min-height: 0;
+  background: #0d1117;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.node-circle {
+  transition: r 0.2s, stroke-width 0.2s;
+}
+
+.node-circle:hover {
+  r: 25;
+  stroke-width: 3;
+}
+
+.node-label {
+  pointer-events: none;
+  user-select: none;
+}
+
+.graph-loading,
+.graph-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: #999;
+  min-height: 500px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.graph-empty p {
+  margin: 0.5rem 0;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.node-details {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  max-width: 300px;
+  z-index: 10;
+}
+
+.node-details h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.node-details p {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.node-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.node-details button {
+  flex: 1;
+  min-width: 100px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.node-details button:hover {
+  background: #5568d3;
+}
+
+.node-details button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.open-file-btn {
+  background: #2ecc71 !important;
+}
+
+.open-file-btn:hover:not(:disabled) {
+  background: #27ae60 !important;
+}
+
+.edge-details {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  max-width: 300px;
+  z-index: 10;
+}
+
+.edge-details h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.edge-info {
+  margin-bottom: 1rem;
+}
+
+.edge-files {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.edge-file {
+  font-weight: 500;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.edge-arrow {
+  color: #6b7280;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.edge-type,
+.edge-label {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.edge-type strong,
+.edge-label strong {
+  color: #ccc;
+}
+
+.edge-type-selector {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #1a1a1a;
+  border-radius: 6px;
+  border: 1px solid #333;
+}
+
+.edge-type-selector label {
+  display: block;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.relationship-type-select {
+  width: 100%;
+  padding: 0.5rem;
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.relationship-type-select:hover {
+  border-color: #6b7280;
+}
+
+.relationship-type-select:focus {
+  outline: none;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
+}
+
+.update-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.update-btn:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(107, 114, 128, 0.3);
+}
+
+.update-btn:active {
+  transform: translateY(0);
+}
+
+.edge-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.edge-actions button {
+  flex: 1;
+  min-width: 120px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.edge-actions button:hover {
+  background: #5568d3;
+}
+
+.edge-actions .delete-btn {
+  background: #e74c3c;
+}
+
+.edge-actions .delete-btn:hover {
+  background: #c0392b;
+}
+
+.graph-legend {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #333;
+  background: #252525;
+  border-radius: 0 0 12px 12px;
+}
+
+.legend-section {
+  flex: 1;
+}
+
+.legend-section h4 {
+  margin: 0 0 0.5rem 0;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+.legend-line {
+  width: 20px;
+  height: 2px;
+  border-top: 2px solid;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .graph-legend {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .graph-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .graph-info {
+    order: 3;
+    width: 100%;
+  }
+}
+
+

@@ -1,0 +1,153 @@
+.file-request-upload-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  padding: 20px;
+}
+
+.upload-container {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.upload-container h1 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.upload-container h2 {
+  margin: 0 0 15px 0;
+  color: #6b7280;
+  font-size: 22px;
+}
+
+.request-description {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.status-message {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.status-message.error {
+  background: #fee;
+  color: #c0392b;
+}
+
+.upload-area {
+  margin: 30px 0;
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  border: 3px dashed #6b7280;
+  border-radius: 12px;
+  background: #f8f9ff;
+  cursor: pointer;
+  transition: all 0.3s;
+  gap: 15px;
+}
+
+.upload-label:hover {
+  background: #f0f4ff;
+  border-color: #5568d3;
+}
+
+.upload-icon {
+  font-size: 48px;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #27ae60;
+}
+
+.spinner-small {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #6b7280;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.uploaded-files-section {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.uploaded-files-section h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+}
+
+.uploaded-files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uploaded-file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.file-icon {
+  font-size: 20px;
+}
+
+.file-name {
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+}
+
+.uploader {
+  font-size: 12px;
+  color: #999;
+}
+
+.loading,
+.error-message {
+  text-align: center;
+  padding: 40px;
+  color: white;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+

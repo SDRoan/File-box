@@ -1,0 +1,520 @@
+.pdf-signature-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.pdf-signature-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.pdf-page-info {
+  font-weight: 500;
+  color: #666;
+}
+
+.pdf-signature-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sign-place-btn,
+.cancel-btn,
+.manage-signatures-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sign-place-btn {
+  background: var(--primary);
+  color: white;
+}
+
+.sign-place-btn:hover {
+  background: var(--primary-dark);
+}
+
+.sign-place-btn.active {
+  background: #ff6b6b;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.cancel-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+.manage-signatures-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.manage-signatures-btn:hover {
+  background: #5a6268;
+}
+
+.sign-fields-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #28a745;
+  color: white;
+}
+
+.sign-fields-btn:hover {
+  background: #218838;
+}
+
+.pdf-signature-container {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+  background: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+}
+
+.pdf-signature-container.placing-field {
+  cursor: crosshair;
+}
+
+.pdf-signature-container.placing-field .pdf-signature-iframe {
+  opacity: 1;
+  pointer-events: none; /* Disable iframe pointer events when placing fields */
+}
+
+.pdf-click-overlay {
+  pointer-events: auto;
+}
+
+.pdf-signature-container.placing-field::after {
+  content: 'Click anywhere on the PDF to create a signature field';
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  z-index: 1000;
+  pointer-events: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pdf-signature-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 150px);
+  border: none;
+  background: white;
+  display: block;
+}
+
+.signature-overlays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.signature-overlay {
+  position: absolute;
+  pointer-events: auto;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
+  transition: transform 0.2s;
+}
+
+.signature-overlay:hover {
+  transform: scale(1.05);
+  z-index: 6;
+}
+
+.signature-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.signature-fields-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.signature-field-box {
+  position: absolute;
+  border: 2px dashed var(--primary);
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 4px;
+  pointer-events: auto !important;
+  transition: all 0.2s;
+  min-width: 150px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 2000 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.signature-field-box:hover {
+  border-color: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.signature-field-box.selected {
+  border-color: #ff6b6b;
+  border-width: 3px;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
+}
+
+.signature-field-box.filled {
+  border-style: solid;
+  border-color: #4caf50;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.signature-field-box.empty {
+  border-style: dashed;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.signature-field-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0.25rem;
+}
+
+.signature-field-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.signature-field-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.signature-field-box.empty {
+  cursor: pointer;
+}
+
+.signature-field-box.empty:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.field-delete-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ff4444;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  z-index: 20;
+}
+
+.field-delete-btn:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+.field-edit-btn {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #4caf50;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  z-index: 20;
+}
+
+.field-edit-btn:hover {
+  background: #45a049;
+  transform: scale(1.1);
+}
+
+.signature-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.signature-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.signature-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.signature-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.signature-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.create-signature-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s;
+}
+
+.create-signature-btn:hover {
+  background: var(--primary-dark);
+}
+
+.no-signatures {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.signatures-list-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signature-item-modal {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signature-item-modal:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signature-item-modal img {
+  max-width: 200px;
+  max-height: 80px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.signature-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.signature-item-info span:first-child {
+  font-weight: 500;
+  color: #333;
+}
+
+.default-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.fields-to-sign-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field-to-sign-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.field-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.field-info strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+.field-position {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.signatures-grid-small {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.signature-option-small {
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signature-option-small:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signature-option-small img {
+  max-width: 100px;
+  max-height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.signature-option-small span {
+  font-size: 0.8rem;
+  color: #333;
+  text-align: center;
+}
+

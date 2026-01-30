@@ -1,0 +1,133 @@
+.join-requests-modal {
+  max-width: 600px;
+  max-height: 80vh;
+}
+
+.no-requests {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+.requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.request-user-info {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.user-avatar-small {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.request-details {
+  flex: 1;
+}
+
+.request-user-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.request-user-email {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.request-message {
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 4px;
+  border-left: 3px solid #6b7280;
+}
+
+.request-date {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.request-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.accept-btn,
+.reject-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s;
+}
+
+.accept-btn {
+  background: #28a745;
+  color: white;
+}
+
+.accept-btn:hover {
+  background: #218838;
+}
+
+.reject-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+.reject-btn:hover {
+  background: #c0392b;
+}
+
+.action-btn.admin {
+  background: #f39c12;
+  color: white;
+}
+
+.action-btn.admin:hover {
+  background: #e67e22;
+}
+
+
+
+
+
+
+
+
+

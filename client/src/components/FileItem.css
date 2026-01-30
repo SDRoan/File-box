@@ -1,0 +1,244 @@
+.file-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1.25rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  position: relative;
+  min-height: 200px;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.file-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.file-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: #d1d5db;
+}
+
+.file-item:hover::before {
+  opacity: 1;
+}
+
+.file-item.selected {
+  border-color: #6b7280;
+  background: rgba(107, 114, 128, 0.04);
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.selection-checkbox {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.file-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform var(--transition-base);
+}
+
+.file-item:hover .file-icon {
+  transform: scale(1.1);
+}
+
+.file-info {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+  width: 100%;
+  max-width: 100%;
+  word-break: break-word;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+  cursor: text;
+}
+
+.file-name-input {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.875rem;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0.25rem;
+  padding: 2px 6px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  background: #ffffff;
+  outline: none;
+  font-family: inherit;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+
+.file-name-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+}
+
+/* Allow wrapping in grid view for very long names */
+.file-list:not(.list-view) .file-item .file-name {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  max-height: 2.8em;
+}
+
+.file-meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.recovery-info {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.file-actions {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+
+.file-item:hover .file-actions {
+  opacity: 1;
+}
+
+/* List view overrides */
+.file-list.list-view .file-item {
+  flex-direction: row;
+  min-height: auto;
+  padding: 12px 16px;
+  border-radius: 0;
+  box-shadow: none;
+  justify-content: flex-start;
+}
+
+.file-list.list-view .file-item:hover {
+  transform: none;
+  box-shadow: none;
+  background: #f9fafb;
+}
+
+.file-list.list-view .file-item .selection-checkbox {
+  position: static;
+  margin-right: 12px;
+}
+
+.file-list.list-view .file-item .file-icon {
+  font-size: 32px;
+  margin-right: 15px;
+  margin-bottom: 0;
+}
+
+.file-list.list-view .file-item .file-info {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.file-list.list-view .file-item .file-actions {
+  opacity: 1;
+  margin-top: 0;
+  margin-left: auto;
+}
+
+.icon-button {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  color: var(--text-secondary);
+}
+
+.icon-button:hover {
+  background: var(--primary);
+  color: var(--text-inverse);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.icon-button:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.icon-button.starred {
+  background: rgba(107, 114, 128, 0.15);
+}
+
+.icon-button.starred:hover {
+  background: rgba(107, 114, 128, 0.25);
+}
+
+.icon-button.danger {
+  background: rgba(75, 85, 99, 0.1);
+}
+
+.icon-button.danger:hover {
+  background: rgba(75, 85, 99, 0.2);
+}
+
+/* Smaller buttons in grid view */
+.file-list:not(.list-view) .file-item .icon-button {
+  font-size: 14px;
+  padding: 4px 6px;
+  min-width: 28px;
+  height: 28px;
+}
+

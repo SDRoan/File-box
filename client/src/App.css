@@ -1,0 +1,11 @@
+/* App-specific styles - Design system imported in index.css */
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+}

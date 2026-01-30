@@ -1,0 +1,217 @@
+.file-editor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2500;
+  padding: 20px;
+}
+
+.file-editor-container {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.file-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #333;
+  background: #252525;
+  border-radius: 12px 12px 0 0;
+}
+
+.editor-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.editor-title h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.unsaved-indicator {
+  color: #f59e0b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.editor-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.editor-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.editor-btn.primary {
+  background: #10b981;
+  color: white;
+}
+
+.editor-btn.primary:hover:not(:disabled) {
+  background: #059669;
+}
+
+.editor-btn.secondary {
+  background: #6b7280;
+  color: white;
+}
+
+.editor-btn.secondary:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.editor-btn.close-btn {
+  background: #444;
+  color: white;
+  padding: 8px 12px;
+}
+
+.editor-btn.close-btn:hover:not(:disabled) {
+  background: #555;
+}
+
+.editor-error-banner {
+  background: #ef4444;
+  color: white;
+  padding: 12px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.editor-error-banner p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.file-editor-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+}
+
+.pdf-editor-info,
+.docx-editor-info {
+  background: #2a2a2a;
+  padding: 12px 20px;
+  border-bottom: 1px solid #333;
+  color: #d4d4d4;
+  font-size: 14px;
+}
+
+.pdf-editor-info p,
+.docx-editor-info p {
+  margin: 0;
+}
+
+.editor-textarea {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  border: none;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+}
+
+.editor-textarea:focus {
+  background: #252525;
+}
+
+.editor-loading,
+.editor-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+}
+
+.editor-loading p,
+.editor-error p {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.file-editor-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #333;
+  background: #252525;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-stats {
+  display: flex;
+  gap: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+.editor-warning {
+  color: #f59e0b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Scrollbar styling */
+.editor-textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.editor-textarea::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.editor-textarea::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 5px;
+}
+
+.editor-textarea::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

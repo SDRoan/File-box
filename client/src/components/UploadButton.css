@@ -1,0 +1,39 @@
+.upload-button {
+  padding: 0.625rem 1.125rem;
+  background: #4b5563;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.upload-button svg {
+  flex-shrink: 0;
+}
+
+.upload-button span {
+  flex: 1;
+}
+
+.upload-button:hover {
+  background: #374151;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+
+
+
+
+
+
+
+
+

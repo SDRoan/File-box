@@ -1,0 +1,205 @@
+.study-schedule {
+  padding: var(--spacing-lg);
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
+.schedule-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.schedule-header p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.schedule-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all var(--transition-base);
+}
+
+.schedule-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.schedule-item.completed {
+  opacity: 0.7;
+  background: var(--bg-secondary);
+}
+
+.schedule-item.past {
+  border-color: #ef4444;
+}
+
+.schedule-item-main {
+  flex: 1;
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.schedule-time {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  min-width: 200px;
+}
+
+.time-display {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.time-range {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.schedule-details {
+  flex: 1;
+}
+
+.schedule-details h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.schedule-details p {
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: 0.9rem;
+}
+
+.schedule-meta {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.type-study_session {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.type-review {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.type-assignment_work {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.type-exam_prep {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.type-project_work {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.type-other {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.location-badge {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.schedule-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
+  border-radius: var(--radius-sm);
+}
+
+.icon-btn:hover {
+  opacity: 1;
+  background: var(--bg-hover);
+}
+
+.icon-btn.completed-btn {
+  color: #10b981;
+}
+
+.icon-btn.delete-btn:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-secondary);
+}
+
+.study-schedule-loading {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-secondary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+}

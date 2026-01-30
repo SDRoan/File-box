@@ -1,0 +1,63 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-img {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  height: auto;
+}
+
+.logo-small .logo-img {
+  width: 28px;
+  height: auto;
+}
+
+.logo-medium .logo-img {
+  width: 42px;
+  height: auto;
+}
+
+.logo-large .logo-img {
+  width: 56px;
+  height: auto;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: -0.02em;
+  /* Use solid color for better visibility on light backgrounds */
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Fallback for browsers that don't support background-clip */
+  color: #4b5563;
+}
+
+/* Override for dark backgrounds (like sidebar) */
+.sidebar .logo-text {
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #ffffff;
+}
+
+.logo-small .logo-text {
+  font-size: 1rem;
+}
+
+.logo-medium .logo-text {
+  font-size: 1.25rem;
+}
+
+.logo-large .logo-text {
+  font-size: 1.5rem;
+}
+

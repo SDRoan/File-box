@@ -1,0 +1,5 @@
+@import './styles/design-system.css';
+
+code {
+  font-family: var(--font-mono);
+}
