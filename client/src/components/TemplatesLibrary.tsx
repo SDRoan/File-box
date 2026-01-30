@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TemplateIcon, PlusIcon, LoadingIcon, SearchIcon, FilterIcon, StarredIcon as StarIcon, EyeIcon, TrashIcon } from './Icons';
-import { templatesAPI } from '../services/api';
+import { templatesAPI, filesAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import './TemplatesLibrary.css';
 
